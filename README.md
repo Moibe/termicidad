@@ -1,6 +1,6 @@
 ---
 title: Termicidad
-emoji: 🌖
+emoji: 📈🔥
 colorFrom: pink
 colorTo: blue
 sdk: gradio
