@@ -4,7 +4,7 @@ import yearDivision
 #Función principal
 def greet(name):
 
-    yearDivision.divideYear()
+    #yearDivision.divideYear()
         
     return "Tervetuloa " + name + "!!"
 
