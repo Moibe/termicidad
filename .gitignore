@@ -1,3 +1,5 @@
 /venv/
 *.xlsx
 all.xlsx
+flagged
+__pycache__
