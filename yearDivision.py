@@ -1,39 +1,32 @@
-import pandas as pd
 import time
+import pandas as pd
 
 def divideYear():
 
-    print("Entré correctamente a yearDivision...")
+    print("Iniciando proceso yearDivision...")
+    #Con sheet_name=None extrae las dos, ver como acceder a ellas para hacerles a ambas el fix de fechas. 
+    #Y ver si realmente te conviene extraerlas juntas.
+    df = pd.read_excel('all.xlsx', sheet_name=None, skiprows=range(0),nrows=2500)
 
-    # Read Excel file into a DataFrame
-    df = pd.read_excel('all.xlsx', skiprows=range(0),nrows=26000)
-    
+    print("Información extraída.")
+    time.sleep(1)
 
-    
-    print(len(df))
-    #print(df)
+    print(df)
 
-    #a1952 = df[df['FECHA'].dt.year == 1952]
+    años = range(1955, 1956)
+   
+    for año in años:
 
-    años = range(1952, 1953)
+        print("Estoy en el año: ", año)
+            
+        df_anio = df[df['FECHA'].dt.year == año]
+        print("Obtuve el dataset del año: ", año)
+        print("Arreglando fecha...")
+        df_anio['FECHA'] = df_anio['FECHA'].dt.strftime('%Y/%m/%d')
+        print("Se arreglo fecha correctamente...")
+        df_anio.to_excel(f"excels/a{año}.xlsx", index=False)
 
-    # Bucle anidado para iterar sobre los años
-    # for año in años:
-
-    #     print("Estoy en el año: ", año)
-    #     time.sleep(1)
-    
-    #     df_anio = df[df['FECHA'].dt.year == año]
-    #     print("Obtuve df_anio el dataset.")
-    #     time.sleep(10)
-    #     print("Es esto: ", df_anio)
-    #     # Save the filtered data to a new Excel file
-    #     #df_anio.to_excel(f"{df_anio}.xlsx", index=False)
-
-    # return "OK"
-
+    return "OK"
 
 if __name__ == "__main__":
-    # Code that should only run when the script is executed directly
-    print("Running the script directly...")
     divideYear()
